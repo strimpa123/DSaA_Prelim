@@ -36,8 +36,7 @@ namespace DSaA_Prelim
                     Console.WriteLine("Invalid Input");
             } while (!userDisk);
 
-            // This initializes the Starting elements or contents of the Tower.
-            for (int i = 0; i < tower.Length; i++) {
+            for (int i = 0; i < tower.Length; i++) {             // This initializes the Starting elements or contents of the Tower.
                 tower[i] = new int[diskCount+2];
                 for (int j = 0; j < tower[i].Length; j++) {
                     if (i == 0)
@@ -52,8 +51,7 @@ namespace DSaA_Prelim
                 }
             }
 
-            // This is the Printer Loop for elements of the Tower.
-            for (int i = 0; i < (diskCount + 2); i++)  {
+            for (int i = 0; i < (diskCount + 2); i++)  {             // This is the Printer Loop for elements of the Tower.
                 for (int j = 0; j < tower.Length; j++) {
                     Console.ForegroundColor = colors[tower[j][i]];
                     if (tower[j][i] != 0)
@@ -143,7 +141,7 @@ namespace DSaA_Prelim
 
                     } while (!inputAuth);
                     Console.Clear();
-                    if (targetDisk > sourceDisk) {
+                    if (targetDisk > sourceDisk) {        // This section is responsible for updating the elements of the towers.
                         tower[targetTower][targetIndex - 1] = sourceDisk;
                         tower[sourceTower][sourceIndex] = 0;
                         towerAuth = true;
@@ -158,7 +156,7 @@ namespace DSaA_Prelim
                     else
                         Console.WriteLine("The disk thats is going to move has a higher value than the existing disk in that tower.");
 
-                    Console.WriteLine($"Move Counter: {moveCount}");
+                    Console.WriteLine($"Move Counter: {moveCount}"); // Displays the main User Interface
                     for (int i = 0; i < (diskCount + 2); i++) {
                         for (int j = 0; j < tower.Length; j++) {
                             Console.ForegroundColor = colors[tower[j][i]];
@@ -172,13 +170,13 @@ namespace DSaA_Prelim
                         if (i + 1 == (diskCount + 2))
                             Console.WriteLine($"-0-\t-1-\t-2-");
                     }
-                    for (int k = 0; k < tower[0].Length-2; k++) {
+                    for (int k = 0; k < tower[0].Length-2; k++) { // This checks for winning Condition
                         if (tower[2][tower[2].Length-1-k] != tower[2].Length-2-k)
                             break;
 
                         else if (k >= tower.Length - 1) {
                             int leastMoves = 2;
-                            for (int i = 0; i < diskCount-1; i++)
+                            for (int i = 0; i < diskCount-1; i++) // obtains the least/most efficient moves required and compare it to the user move counter
                                 leastMoves = leastMoves * 2;
                             leastMoves = leastMoves-1;
                             float accuracy = ((float)leastMoves / (float)moveCount)*100;
@@ -187,9 +185,7 @@ namespace DSaA_Prelim
                             mainGame = false;
                             break;
                         }
-
                     }
-
                 }
             }
         }
