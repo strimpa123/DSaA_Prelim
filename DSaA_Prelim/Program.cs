@@ -65,7 +65,7 @@ namespace DSaA_Prelim
                 if (i+1 == (diskCount + 2))
                     Console.WriteLine($"\t-0-\t-1-\t-2-");
             }
-            Console.WriteLine($"Welcome to Tower of Hanoi!\nThe Goal is to move all the disk to Tower [2].\n|Reminder|\nYou can't put higher value disk on top of lower value disk.\n\nPress enter to Start...");
+            Console.WriteLine($"Welcome to Tower of Hanoi!\nYour Goal is to move all the disk from Tower [0] to Tower [2].\n| Remember |\nYou can't put higher value disk on top of lower value disk!\n\nPress enter to Start...");
             Console.ReadKey();
 
             while (mainGame) // This Holds the whole main loop for the whole game
@@ -89,10 +89,10 @@ namespace DSaA_Prelim
                         Console.WriteLine($"\t-0-\t-1-\t-2-");
                 }
 
-                for (int k = 0; k < tower[0].Length - 2; k++) { // This checks for winning Condition
-                    if (tower[2][tower[2].Length - 1 - k] != tower[2].Length - 2 - k)
+                for (int k = 0; k < diskCount+1; k++) { // This checks for winning Condition
+                    if (tower[2][tower[2].Length - 1 - k] != diskCount - k)
                         break;
-                    else if (k >= tower.Length - 1) {
+                    else if (k == diskCount) {
                         int leastMoves = 2;
                         for (int i = 0; i < diskCount - 1; i++) // obtains the least/most efficient moves required and compare it to the user move counter
                             leastMoves = leastMoves * 2;
