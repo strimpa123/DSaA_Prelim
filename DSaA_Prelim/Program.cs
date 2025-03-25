@@ -49,25 +49,6 @@ namespace DSaA_Prelim
                 }
             }
 
-            Console.WriteLine($"Move Counter: {moveCount}");        // This is the Printer Loop for elements of the Tower.
-            for (int i = 0; i < (diskCount + 2); i++)  {
-                for (int j = 0; j < tower.Length; j++)  {
-                    Console.ForegroundColor = colors[tower[j][i]];
-                    if (j == 0)
-                        Console.Write("\t");
-                    if (tower[j][i] != 0)
-                        Console.Write($"[{tower[j][i]}]\t");
-                    else
-                        Console.Write(" |\t");
-                    Console.ResetColor();
-                }
-                Console.WriteLine("");
-                if (i+1 == (diskCount + 2))
-                    Console.WriteLine($"\t-0-\t-1-\t-2-");
-            }
-            Console.WriteLine($"Welcome to Tower of Hanoi!\nYour Goal is to move all the disk from Tower [0] to Tower [2].\n| Remember |\nYou can't put higher value disk on top of lower value disk!\n\nPress enter to Start...");
-            Console.ReadKey();
-
             while (mainGame) // This Holds the whole main loop for the whole game
             {
                 bool towerAuth = false;
@@ -84,9 +65,14 @@ namespace DSaA_Prelim
                             Console.Write(" |\t");
                         Console.ResetColor();
                     }
-                    Console.WriteLine("");
+                    Console.WriteLine();
                     if (i + 1 == (diskCount + 2))
                         Console.WriteLine($"\t-0-\t-1-\t-2-");
+                }
+
+                if (moveCount == 0) {
+                    Console.WriteLine($"Welcome to Tower of Hanoi!\nYour Goal is to move all the disk from Tower [0] to Tower [2].\n| Remember |\nYou can't put higher value disk on top of lower value disk!\n\nPress enter to Start...");
+                    Console.ReadKey();
                 }
 
                 for (int k = 0; k < diskCount+1; k++) { // This checks for winning Condition
